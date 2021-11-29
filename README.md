@@ -28,4 +28,6 @@ I've used APIs before but never more than one. I used an API to get the Joke and
 4. When your account is created, you need to activate the account by clicking the 'Activate Account' button on the sign up page.
 5. Once your account is activated, you can copy your API key and paste it into the script.js file.
    - Line 117 replace **'config.MY_KEY'** with your API Key with quotes surrounding it. _As shown in the image below_.
-     **TODO** Add this image using the VS code extension polacode
+   
+    ![config](https://user-images.githubusercontent.com/59238194/143959551-41eba073-40b8-4abb-8287-2d74d88457f0.png)
+
