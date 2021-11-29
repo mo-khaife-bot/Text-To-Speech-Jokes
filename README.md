@@ -1,4 +1,5 @@
 # Jokes Robot App
+
 > Robot Joke Teller Web App using text-to-speech-API and Joke API
 
 This is a simple app where a Robot voice will tell you a joke from a Joke API. This app was made using HTML, CSS JS and 2 APIs [Joke API](https://sv443.net/jokeapi/v2/) and the [Voice RSS Text-To-Speech API](http://www.voicerss.org/api/).
@@ -10,24 +11,28 @@ This is a simple app where a Robot voice will tell you a joke from a Joke API. T
 
 The Play/Pause controls of the audioElement is hidden so abstracted away so simpler interface where users just have to click button to start joke.
 
-This project is from the [Zero to Mastery: JavaScript Web Projects: 20 Projects to Build Your Portfolio](https://academy.zerotomastery.io/p/javascript-projects).
+This project is from the [Zero to Mastery: JavaScript Web Projects: 20 Projects to Build Your Portfolio](https://academy.zerotomastery.io/p/javascript-projects). This is part 4/20 projects.
 
 ## My Customisations
+
 Added additional features where the user can select the type of joke they want. There is a choice of 3 joke types: programming, nsfw & dark.
 
 ## Live Demo
+
 > **TODO** provide link to live project using github pages.
 
 ## Thoughts on Project
+
 I've used APIs before but never more than one. I used an API to get the Joke and another to Speak it out loud. I enjoyed this fun little project that can be used to tell jokes.
 
 ## Running this locally on your computer
+
 1. Go to the documentation page for the Voice RSS Text to Speech API page found [here](http://www.voicerss.org/api/)
 2. Click **'Get API Key'** on the left nav bar
 3. Create a free account
 4. When your account is created, you need to activate the account by clicking the 'Activate Account' button on the sign up page.
 5. Once your account is activated, you can copy your API key and paste it into the script.js file.
-   - Line 117 replace **'config.MY_KEY'** with your API Key with quotes surrounding it. _As shown in the image below_.
-   
-    ![config](https://user-images.githubusercontent.com/59238194/143959551-41eba073-40b8-4abb-8287-2d74d88457f0.png)
 
+   - Line 117 replace **'config.MY_KEY'** with your API Key with quotes surrounding it. _As shown in the image below_.
+
+   ![config](https://user-images.githubusercontent.com/59238194/143959551-41eba073-40b8-4abb-8287-2d74d88457f0.png)
