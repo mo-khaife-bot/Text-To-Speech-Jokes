@@ -1,11 +1,12 @@
 /* ROBOT.GIF from Giphy - https://giphy.com/gifs/robot-cinema-4d-eyedesyn-3o7abtn7DuREEpsyWY */
 
-html {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   background: #45badd;
 }
 
@@ -34,7 +35,14 @@ button {
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.2);
-  font-weight: 700;
+}
+
+.nsfw {
+  width: 120px;
+}
+
+.dark {
+  width: 120px;
 }
 
 button:hover {
@@ -46,9 +54,21 @@ button:active {
   transform: scale(0.98);
 }
 
+/* when btn disabled takes this appearance */
 button:disabled {
   cursor: default;
   filter: brightness(30%);
+}
+
+.joke-choice-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.8rem;
+}
+
+.btn-choice {
+  margin: 5px;
 }
 /* Media Query: Tablet or Smaller */
 @media screen and (max-width: 1000px) {
@@ -59,5 +79,12 @@ button:disabled {
 
   button {
     box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .joke-choice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

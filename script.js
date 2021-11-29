@@ -1,120 +1,28 @@
 const button = document.getElementById("button");
 const audioElement = document.getElementById("audio");
 
-// VoiceRSS Javascript SDK minified
-const VoiceRSS = {
-  speech: function (e) {
-    this._validate(e), this._request(e);
-  },
-  _validate: function (e) {
-    if (!e) throw "The settings are undefined";
-    if (!e.key) throw "The API key is undefined";
-    if (!e.src) throw "The text is undefined";
-    if (!e.hl) throw "The language is undefined";
-    if (e.c && "auto" != e.c.toLowerCase()) {
-      var a = !1;
-      switch (e.c.toLowerCase()) {
-        case "mp3":
-          a = new Audio().canPlayType("audio/mpeg").replace("no", "");
-          break;
-        case "wav":
-          a = new Audio().canPlayType("audio/wav").replace("no", "");
-          break;
-        case "aac":
-          a = new Audio().canPlayType("audio/aac").replace("no", "");
-          break;
-        case "ogg":
-          a = new Audio().canPlayType("audio/ogg").replace("no", "");
-          break;
-        case "caf":
-          a = new Audio().canPlayType("audio/x-caf").replace("no", "");
-      }
-      if (!a) throw "The browser does not support the audio codec " + e.c;
-    }
-  },
-  _request: function (e) {
-    var a = this._buildRequest(e),
-      t = this._getXHR();
-    (t.onreadystatechange = function () {
-      if (4 == t.readyState && 200 == t.status) {
-        if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
-        (audioElement.src = t.responseText), audioElement.play();
-      }
-    }),
-      t.open("POST", "https://api.voicerss.org/", !0),
-      t.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8"
-      ),
-      t.send(a);
-  },
-  _buildRequest: function (e) {
-    var a = e.c && "auto" != e.c.toLowerCase() ? e.c : this._detectCodec();
-    return (
-      "key=" +
-      (e.key || "") +
-      "&src=" +
-      (e.src || "") +
-      "&hl=" +
-      (e.hl || "") +
-      "&r=" +
-      (e.r || "") +
-      "&c=" +
-      (a || "") +
-      "&f=" +
-      (e.f || "") +
-      "&ssml=" +
-      (e.ssml || "") +
-      "&b64=true"
-    );
-  },
-  _detectCodec: function () {
-    var e = new Audio();
-    return e.canPlayType("audio/mpeg").replace("no", "")
-      ? "mp3"
-      : e.canPlayType("audio/wav").replace("no", "")
-      ? "wav"
-      : e.canPlayType("audio/aac").replace("no", "")
-      ? "aac"
-      : e.canPlayType("audio/ogg").replace("no", "")
-      ? "ogg"
-      : e.canPlayType("audio/x-caf").replace("no", "")
-      ? "caf"
-      : "";
-  },
-  _getXHR: function () {
-    try {
-      return new XMLHttpRequest();
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml3.XMLHTTP");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.6.0");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.3.0");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (e) {}
-    throw "The browser does not support HTTP request";
-  },
-};
+// const btnChoice = document.querySelector(".btn-choice");
 
-// disabble/enable btn
+const programmingBtn = document.querySelector(".programming");
+const nsfwBtn = document.querySelector(".nsfw");
+const darkBtn = document.querySelector(".dark");
+
+// VoiceRSS Javascript SDK minified
+// for readability the global variable VoiceRSS in another js file
+
+let currentAPIUrl =
+  "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+
+// disable/enable btn
 function toggleButton() {
-  btn.disabled = !btn.disabled;
+  button.disabled = !button.disabled;
 }
 
 // Passing Joke into VoiceRSS API function
 function tellMe(joke) {
-  console.log("tell me:", joke);
+  console.log(joke);
   VoiceRSS.speech({
-    key: "811865a019084125af33e9226a4cb36f",
+    key: config.MY_KEY,
     src: joke,
     hl: "en-us",
     r: 0,
@@ -127,17 +35,18 @@ function tellMe(joke) {
 // Get Jokes from Joke API_URL
 async function getJokes() {
   let joke = "";
-  const apiUrl =
-    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(currentAPIUrl);
     const data = await response.json();
+
     if (data.setup) {
       joke = `${data.setup} ... 
 ${data.delivery}`;
     } else {
       joke = data.joke;
     }
+
     // text-to-speech
     tellMe(joke);
     // Disabled Button
@@ -148,7 +57,36 @@ ${data.delivery}`;
   }
 }
 
-// Event Listners
-button.addEventListener("click", getJokes);
+// Event Listeners
+// below when they click the tell me a joke btn
+// why did he put it in a call back func to call it with the  double quotes
+button.addEventListener("click", () => {
+  getJokes();
+});
 
 audioElement.addEventListener("ended", toggleButton);
+
+// Functionality to allow user to switch between different Joke types
+programmingBtn.addEventListener("click", () => {
+  nsfwBtn.disabled = false;
+  darkBtn.disabled = false;
+  programmingBtn.disabled = true;
+  currentAPIUrl =
+    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+});
+
+nsfwBtn.addEventListener("click", () => {
+  darkBtn.disabled = false;
+  programmingBtn.disabled = false;
+  nsfwBtn.disabled = true;
+  currentAPIUrl =
+    "https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,racist,sexist";
+});
+
+darkBtn.addEventListener("click", () => {
+  nsfwBtn.disabled = false;
+  programmingBtn.disabled = false;
+  darkBtn.disabled = true;
+  currentAPIUrl =
+    "https://v2.jokeapi.dev/joke/Dark?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+});
