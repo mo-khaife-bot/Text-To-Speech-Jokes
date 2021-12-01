@@ -21,8 +21,14 @@ Added additional features where the user can select the type of joke they want. 
 ## Live Demo
 > **TODO** provide link to live project using github pages.
 
-## Thoughts on Project
-I've used APIs before but never more than one. I used an API to get the Joke and another to Speak it out loud. I enjoyed this fun little project that can be used to tell jokes.
+## Tools
+❕ Icons: Fontawesome
+
+⛅ Voice API : Voice RSS
+
+🔨 Jokes API : Joke API
+
+⭐ GIF: Giphy
 
 ## Running this locally on your computer
 1. Go to the documentation page for the Voice RSS Text to Speech API page found [here](http://www.voicerss.org/api/)
