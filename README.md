@@ -2,6 +2,9 @@
 
 > Robot Joke Teller Web App using text-to-speech-API and Joke API
 
+![robot](https://user-images.githubusercontent.com/59238194/144213857-e7c2266c-b341-49a7-8a4b-1f4f7adb8002.gif)
+
+
 This is a simple app where a Robot voice will tell you a joke from a Joke API. This app was made using HTML, CSS JS and 2 APIs [Joke API](https://sv443.net/jokeapi/v2/) and the [Voice RSS Text-To-Speech API](http://www.voicerss.org/api/).
 
 1. When clicking the **Tell Me A Joke** button a GET request is sent to the [Joke API](http://sv443.net/joke) resulting in a received JSON object with a joke string. Also the **Tell Me A Joke** button is disabled when clicked. This means another joke can't be initiated while the previous joke is still running.
@@ -21,9 +24,20 @@ Added additional features where the user can select the type of joke they want. 
 
 > **TODO** provide link to live project using github pages.
 
+<<<<<<< HEAD
 ## Thoughts on Project
 
 I've used APIs before but never more than one. I used an API to get the Joke and another to Speak it out loud. I enjoyed this fun little project that can be used to tell jokes.
+=======
+## Tools
+❕ Icons: Fontawesome
+
+⛅ Voice API : Voice RSS
+
+🔨 Jokes API : Joke API
+
+⭐ GIF: Giphy
+>>>>>>> 8d7880b151475cfe5f091015fe5dd106751ca8ec
 
 ## Running this locally on your computer
 
