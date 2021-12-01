@@ -22,7 +22,7 @@ function toggleButton() {
 function tellMe(joke) {
   console.log(joke);
   VoiceRSS.speech({
-    key: config.MY_KEY,
+    key: "811865a019084125af33e9226a4cb36f",
     src: joke,
     hl: "en-us",
     r: 0,
