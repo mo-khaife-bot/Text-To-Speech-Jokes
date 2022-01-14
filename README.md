@@ -35,8 +35,7 @@ I've used APIs before but never more than one. I used an API to get the Joke and
 
 🔨 Jokes API : Joke API
 
-⭐ GIF: Giphy
->>>>>>> 8d7880b151475cfe5f091015fe5dd106751ca8ec
+
 
 ## Running this locally on your computer
 
